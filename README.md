@@ -16,5 +16,5 @@ Given arrays of parameters `A_k^x, B_k^x, A_k^y, B_k^y`, a curve, parameterized 
   x(t) = \sum_{k=0} (A_k^x cos(kt) + B_k^x sin(kt))
   y(t) = \sum_{k=0} (A_k^y cos(kt) + B_k^y sin(kt))
   
-  min_{A_k^x, B_k^x, A_k^y, B_k^y} \sum_i (x(t) - p_i^x)^2 + (y(t) - p_i^y)^2
+  min_{A_k^x, B_k^x, A_k^y, B_k^y} \sum_i ((x(t) - p_i^x)^2 + (y(t) - p_i^y)^2)
 ```
