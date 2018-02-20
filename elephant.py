@@ -5,7 +5,7 @@ import tensorflow as tf
 if 0:
     path = "points_elephant.npy"
 
-    # superfluous parameters will be sparse
+    # superfluous parameters will turn out to be zero
     n_parameters = 10*4
 else:
     path = "points_fancy_elephant.npy"
@@ -25,12 +25,14 @@ bx = parameters[:, 1:2]
 ay = parameters[:, 2:3]
 by = parameters[:, 3:4]
 
+# weird shapes so (k*t) broadcasts to shape (n_parameters/4, len(points))
 t = np.linspace(0, 2*np.pi, len(points), endpoint=False).reshape(1, -1)
-
 k = np.arange(1, n_parameters//4 + 1).reshape(-1, 1)
+
 c = np.cos(k*t)
 s = np.sin(k*t)
 
+# sum over parameter axis
 x = tf.reduce_sum(ax*c + bx*s, axis=0)
 y = tf.reduce_sum(ay*c + by*s, axis=0)
 
